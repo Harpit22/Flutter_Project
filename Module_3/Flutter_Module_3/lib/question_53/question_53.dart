@@ -25,42 +25,45 @@ class _Screen53State extends State<Screen53> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-            title: Text("Generate Random Color"), //appbar title
-            backgroundColor: Colors.redAccent //appbar background color
-            ),
-        backgroundColor: cone,
-        body: Container(
-            height: 130,
-            color: ctwo,
-            alignment: Alignment.topCenter,
-            padding: EdgeInsets.all(15),
-            child: Column(children: [
-              ElevatedButton(
-                  onPressed: () {
-                    Random random = Random();
-                    Color tempcol = Color.fromRGBO(
-                      random.nextInt(255),
-                      random.nextInt(255),
-                      random.nextInt(255),
-                      1,
-                    );
+          title: Text("Generate Random Color"), //appbar title
+        ),
+        /*backgroundColor: cone,*/
+        body: Center(
+          child: Container(
+              color: cone,
+              alignment: Alignment.topCenter,
+              padding: EdgeInsets.all(15),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.white),
+                    onPressed: () {
+                      Random random = Random();
+                      Color tempcol = Color.fromRGBO(
+                        random.nextInt(255),
+                        random.nextInt(255),
+                        random.nextInt(255),
+                        // 1,//this is fix opacity
+                        random.nextDouble(), //this is radome opacity color
+                      );
+                      setState(() {
+                        cone = tempcol;
+                      });
+                    },
+                    child: Text("Clicked",style: TextStyle(color: Colors.black54),)),
+                /*ElevatedButton(
+                    onPressed: () {
+                      Random random = Random();
+                      int cindex = random.nextInt(colors.length);
+                      Color tempcol = colors[cindex];
 
-                    setState(() {
-                      cone = tempcol;
-                    });
-                  },
-                  child: Text("Random Scaffold Color")),
-              ElevatedButton(
-                  onPressed: () {
-                    Random random = Random();
-                    int cindex = random.nextInt(colors.length);
-                    Color tempcol = colors[cindex];
-
-                    setState(() {
-                      ctwo = tempcol;
-                    });
-                  },
-                  child: Text("Random Container Color")),
-            ])));
+                      setState(() {
+                        ctwo = tempcol;
+                      });
+                    },
+                    child: Text("Random Container Color")),*/
+              ])),
+        ));
   }
 }
