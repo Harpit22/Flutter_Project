@@ -22,7 +22,8 @@ class Screen49 extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => Screen_2(),
-                ));
+                )
+                );
               },
               child: Text('Page - 2')),
         ],
